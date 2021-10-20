@@ -1,0 +1,59 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.3.5.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'pl.allegro.tech.build.axion-release' version '1.12.0'
+}
+
+group = 'com.variacode'
+//version = '0.0.2-SNAPSHOT'
+version = scmVersion.version
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+scmVersion {
+    ignoreUncommittedChanges = true
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-freemarker'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation group: 'com.google.guava', name: 'guava', version: '31.0.1-jre'
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    runtimeOnly 'com.h2database:h2'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
+sourceSets {
+    main {
+        resources {
+            srcDirs= ["src/main/resources", "webcontent"]
+        }
+    }
+}
+
+springBoot {
+    buildInfo()
+}
+
+bootJar {
+    archiveFileName = "${archiveBaseName.get()}.${archiveExtension.get()}"
+}
+
+tasks.named('wrapper') {
+    distributionType = Wrapper.DistributionType.ALL
+}
+

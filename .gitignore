@@ -1,0 +1,6 @@
+/config/application.properties
+build
+.DS_Store
+.gradle
+.idea
+/logs/

@@ -1,0 +1,28 @@
+version: '3'
+services:
+  glen:
+    image: adoptopenjdk:11-jre-hotspot
+    links:
+      - glendb
+    ports:
+      - ${GLEN_PORT:-51778}:51778
+    command: java -jar glen-market-maker.jar
+    volumes:
+      - ${GLEN_JAR:-./build/libs/glen-market-maker.jar}:/var/app/glen-market-maker.jar
+      - ./config:/var/app/config
+      - ./logs:/var/app/logs
+    working_dir: /var/app
+    environment:
+      - SPRING_DATASOURCE_DRIVERCLASSNAME=org.postgresql.Driver
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://glendb/glen
+      - SPRING_DATASOURCE_USERNAME=glen
+      - SPRING_DATASOURCE_PASSWORD=wreck
+  glendb:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=glen
+      - POSTGRES_USER=glen
+      - POSTGRES_PASSWORD=wreck
+    ports:
+    - "5435:5432"
