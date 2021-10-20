@@ -57,3 +57,6 @@ tasks.named('wrapper') {
     distributionType = Wrapper.DistributionType.ALL
 }
 
+tasks.register("getVer") {
+    println(version)
+}
