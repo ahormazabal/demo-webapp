@@ -1,7 +1,7 @@
 ACR ?= rodacrvariacode
 VERSION := $(shell ./gradlew getVer -q)
 
-default: pack
+default: build
 
 clean:
 	./gradlew clean
@@ -9,12 +9,12 @@ clean:
 buildjar:
 	./gradlew build
 
-pack: buildjar
+docker:
 	docker build -t variacode/demo-webapp .
 
 tag:
 	docker tag variacode/demo-webapp $(ACR).azurecr.io/demo-webapp:$(VERSION)
 
-push:
+push: docker
 	docker tag variacode/demo-webapp $(ACR).azurecr.io/demo-webapp:$(VERSION)
 	docker push $(ACR).azurecr.io/demo-webapp:$(VERSION)
