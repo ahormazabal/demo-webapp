@@ -16,5 +16,6 @@ tag:
 	docker tag variacode/demo-webapp $(ACR).azurecr.io/demo-webapp:$(VERSION)
 
 push: docker
+	az acr login --name $(ACR)
 	docker tag variacode/demo-webapp $(ACR).azurecr.io/demo-webapp:$(VERSION)
 	docker push $(ACR).azurecr.io/demo-webapp:$(VERSION)
