@@ -1,7 +1,7 @@
 [#include "_indexheader.html.ftlh"]
 
 <div class="alert alert-success" role="alert">
-  Eample Web Application&nbsp;<small class="text-muted">Version ${version}</small>
+  Eampl Web Application&nbsp;<small class="text-muted">Version ${version}</small>
 </div>
 
 <div>
