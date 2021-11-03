@@ -1,7 +1,7 @@
 [#include "_indexheader.html.ftlh"]
 
 <div class="alert alert-success" role="alert">
-  Example Web Application&nbsp;<small class="text-muted">Version ${version}</small>
+  Exampl Wubz Aplicacion&nbsp;<small class="text-muted">Version ${version}</small>
 </div>
 
 <div>
@@ -9,7 +9,7 @@
   <br>
   <a href="#" class="alert alert-success">Service 1</a>
   <a href="#" class="alert alert-warning">Service2</a>
-  <a href="#" class="alert alert-secondary">Service3</a>
+  <a href="#" class="alert alert-secondary">Service3 </a>
 </div>
 <hr>
 <div>
